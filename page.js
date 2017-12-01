@@ -393,7 +393,7 @@ export class Page extends PageBase {
 
     /**
      * Retrieves the count of pages and attachments within a hierarchy
-     * @returns {Promise} A Promise that, when resolved, yields the heierachy count information.
+     * @returns {Promise} A Promise that, when resolved, yields the hierachy count information.
      */
     getHierarchyInfo() {
         return this._plug.at('hierarchyinfo').get()
