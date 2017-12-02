@@ -65,4 +65,28 @@ export class Kcs {
         }
         return this._plug.at(pageid, 'state').withParams(state).post();
     }
+
+    /**
+     * Sets KCS flag state the current page to true
+     * @param {Number|String} pageid The ID of the page to set a new state on.
+     * @returns {Promise} A Promise that is resolved, or rejected with an error specifying the reason for rejection.
+     */
+    flag(pageid) {
+        if(!pageid) {
+            return Promise.reject('Page ID must be specified for request.');
+        }
+        return this._plug.at(pageid, 'flag').post();
+    }
+
+    /**
+     * Sets KCS flag state the current page to true
+     * @param {Number|String} pageid The ID of the page to set a new state on.
+     * @returns {Promise} A Promise that is resolved, or rejected with an error specifying the reason for rejection.
+     */
+    unflag(pageid) {
+        if(!pageid) {
+            return Promise.reject('Page ID must be specified for request.');
+        }
+        return this._plug.at(pageid, 'unflag').post();
+    }
 }
