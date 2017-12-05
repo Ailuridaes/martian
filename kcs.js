@@ -1,6 +1,7 @@
 import { Plug } from '/mindtouch-http.js/plug.js';
 import { Settings } from './lib/settings.js';
 import { modelParser } from './lib/modelParser.js';
+import { utility } from './lib/utility.js';
 import { apiErrorModel } from './models/apiError.model.js';
 import { kcsTransitionsModel } from './models/kcsTransitions.model.js';
 import { kcsStateModel } from './models/kcsState.model.js';
@@ -51,42 +52,19 @@ export class Kcs {
     /**
      * Posts KCS state for given page
      * @param {Number|String} pageid The ID of the page to set a new state on.
-     * @param {Object} state The state that the page should be set to. Can include confidence or visibility or both.
+     * @param {Object} state The state that the page should be set to. Must include at least one of the following attributes.
      * @param {String} [state.confidence] The confidence level to set the page to.
      * @param {String} [state.visibility] The visibility level to set the page to.
+     * @param {Boolean} [state.flagged] The flag state to set the page to.
      * @returns {Promise} A Promise that is resolved, or rejected with an error specifying the reason for rejection.
      */
     setState(pageid, state) {
         if(!pageid) {
             return Promise.reject('Page ID must be specified for request.');
         }
-        if(!state.confidence && !state.visibility) {
+        if(!state.confidence && !state.visibility && typeof state.flagged === "undefined") {
             return Promise.reject('Page confidence or visibility state must be specified for request.');
         }
-        return this._plug.at(pageid, 'state').withParams(state).post();
-    }
-
-    /**
-     * Sets KCS flag state the current page to true
-     * @param {Number|String} pageid The ID of the page to set a new state on.
-     * @returns {Promise} A Promise that is resolved, or rejected with an error specifying the reason for rejection.
-     */
-    flag(pageid) {
-        if(!pageid) {
-            return Promise.reject('Page ID must be specified for request.');
-        }
-        return this._plug.at(pageid, 'flag').post();
-    }
-
-    /**
-     * Sets KCS flag state the current page to true
-     * @param {Number|String} pageid The ID of the page to set a new state on.
-     * @returns {Promise} A Promise that is resolved, or rejected with an error specifying the reason for rejection.
-     */
-    unflag(pageid) {
-        if(!pageid) {
-            return Promise.reject('Page ID must be specified for request.');
-        }
-        return this._plug.at(pageid, 'unflag').post();
+        return this._plug.at(pageid, 'state').withParams().post(JSON.stringify(state), utility.jsonRequestType);
     }
 }
