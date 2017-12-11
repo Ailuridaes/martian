@@ -1,0 +1,5 @@
+{
+    "confidence": { "@label": "KCS confidence", "value": "wip", "value-label": "Work In Progress" },
+    "flagged": { "@label": "Flag", "value": "false", "value-label": "Unflagged" },
+    "visibility": { "@label": "Visibility", "value": "internal", "value-label": "Internal" }
+}

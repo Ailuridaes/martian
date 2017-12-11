@@ -2,11 +2,8 @@ import { Plug } from '/mindtouch-http.js/plug.js';
 import { Settings } from './lib/settings.js';
 import { modelParser } from './lib/modelParser.js';
 import { utility } from './lib/utility.js';
-import { apiErrorModel } from './models/apiError.model.js';
 import { kcsTransitionsModel } from './models/kcsTransitions.model.js';
 import { kcsStateModel } from './models/kcsState.model.js';
-
-const _errorParser = modelParser.createParser(apiErrorModel);
 
 /**
  * A class for handling KCS actions
@@ -30,7 +27,9 @@ export class Kcs {
         if(!pageid) {
             return Promise.reject('Page ID must be specified for request.');
         }
-        return this._plug.at(pageid, 'state').get()
+        return this._plug
+            .at(pageid, 'state')
+            .get()
             .then((r) => r.json())
             .then(modelParser.createParser(kcsStateModel));
     }
@@ -44,7 +43,9 @@ export class Kcs {
         if(!pageid) {
             return Promise.reject('Page ID must be specified for request.');
         }
-        return this._plug.at(pageid, 'validtransitions').get()
+        return this._plug
+            .at(pageid, 'validtransitions')
+            .get()
             .then((r) => r.json())
             .then(modelParser.createParser(kcsTransitionsModel));
     }
@@ -62,9 +63,12 @@ export class Kcs {
         if(!pageid) {
             return Promise.reject('Page ID must be specified for request.');
         }
-        if(!state.confidence && !state.visibility && typeof state.flagged === "undefined") {
+        if(!state.confidence && !state.visibility && typeof state.flagged === 'undefined') {
             return Promise.reject('Page confidence or visibility state must be specified for request.');
         }
-        return this._plug.at(pageid, 'state').withParams().post(JSON.stringify(state), utility.jsonRequestType);
+        return this._plug
+            .at(pageid, 'state')
+            .withParams()
+            .post(JSON.stringify(state), utility.jsonRequestType);
     }
 }

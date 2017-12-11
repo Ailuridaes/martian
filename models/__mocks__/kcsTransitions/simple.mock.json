@@ -1,0 +1,31 @@
+{
+    "canedit": "true",
+    "transitions": {
+        "state": [
+            {
+                "confidence": { "@label": "KCS confidence", "value": "wip", "value-label": "Work In Progress" },
+                "visibility": { "@label": "Visibility", "value": "internal", "value-label": "Internal" }
+            },
+            {
+                "confidence": { "@label": "KCS confidence", "value": "notvalidated", "value-label": "Not Validated" },
+                "visibility": { "@label": "Visibility", "value": "internal", "value-label": "Internal" }
+            },
+            {
+                "confidence": { "@label": "KCS confidence", "value": "notvalidated", "value-label": "Not Validated" },
+                "visibility": { "@label": "Visibility", "value": "partners", "value-label": "Partners" }
+            },
+            {
+                "confidence": { "@label": "KCS confidence", "value": "notvalidated", "value-label": "Not Validated" },
+                "visibility": { "@label": "Visibility", "value": "customers", "value-label": "Customers" }
+            },
+            {
+                "confidence": { "@label": "KCS confidence", "value": "validated", "value-label": "Validated" },
+                "visibility": { "@label": "Visibility", "value": "internal", "value-label": "Internal" }
+            },
+            {
+                "confidence": { "@label": "KCS confidence", "value": "archived", "value-label": "Archived" },
+                "visibility": { "@label": "Visibility", "value": "internal", "value-label": "Internal" }
+            }
+        ]
+    }
+}
