@@ -56,14 +56,14 @@ export class Kcs {
      * @param {Object} state The state that the page should be set to. Must include at least one of the following attributes.
      * @param {String} [state.confidence] The confidence level to set the page to.
      * @param {String} [state.visibility] The visibility level to set the page to.
-     * @param {Boolean} [state.flagged] The flag state to set the page to.
+     * @param {Boolean} [state.flag] The flag state to set the page to.
      * @returns {Promise} A Promise that is resolved, or rejected with an error specifying the reason for rejection.
      */
     setState(pageid, state) {
         if(!pageid) {
             return Promise.reject('Page ID must be specified for request.');
         }
-        if(!state.confidence && !state.visibility && typeof state.flagged === 'undefined') {
+        if(!state.confidence && !state.visibility && typeof state.flag === 'undefined') {
             return Promise.reject('Page confidence or visibility state must be specified for request.');
         }
         return this._plug
