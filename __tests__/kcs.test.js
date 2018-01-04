@@ -35,4 +35,11 @@ describe('Kcs', () => {
     it('can get transitions', () => {
         return kcs.getValidTransitions(pageId);
     });
+    it('requires a page id to initialize state', () => {
+        expect.assertions(1);
+        return expect(kcs.initialize()).rejects.toEqual('Page ID must be specified for request.');
+    });
+    it('can initialize state', () => {
+        return kcs.initialize(pageId);
+    });
 });

@@ -71,4 +71,16 @@ export class Kcs {
             .withParams()
             .post(JSON.stringify(state), utility.jsonRequestType);
     }
+
+    /**
+     * Initialize KCS state for given page
+     * @param {Number|String} pageid The ID of the page to initialize KCS state on.
+     * @returns {Promise} A Promise that is resolved, or rejected with an error specifying the reason for rejection.
+     */
+    initialize(pageid) {
+        if(!pageid) {
+            return Promise.reject('Page ID must be specified for request.');
+        }
+        return this._plug.at(pageid, 'initialize').post(utility.jsonRequestType);
+    }
 }
