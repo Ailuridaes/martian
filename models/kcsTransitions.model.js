@@ -7,5 +7,6 @@ export const kcsTransitionsModel = [
             { field: 'state', name: 'states', isArray: true, transform: kcsStateModel }
         ]
     },
-    { field: 'canedit', transform: 'boolean' }
+    { field: 'can-change-governance', name: 'canChangeGovernance', transform: 'boolean' },
+    { field: 'can-change-flag', name: 'canChangeFlag', transform: 'boolean' }
 ];
