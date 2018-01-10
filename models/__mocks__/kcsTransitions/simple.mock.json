@@ -1,29 +1,26 @@
 {
-    "canedit": "true",
+    "can-change-flag": "true",
+    "can-change-governance": "true",
     "transitions": {
         "state": [
             {
-                "confidence": { "@label": "KCS confidence", "value": "wip", "value-label": "Work In Progress" },
+                "confidence": { "@label": "Confidence", "value": "notvalidated", "value-label": "Not Validated" },
                 "visibility": { "@label": "Visibility", "value": "internal", "value-label": "Internal" }
             },
             {
-                "confidence": { "@label": "KCS confidence", "value": "notvalidated", "value-label": "Not Validated" },
-                "visibility": { "@label": "Visibility", "value": "internal", "value-label": "Internal" }
-            },
-            {
-                "confidence": { "@label": "KCS confidence", "value": "notvalidated", "value-label": "Not Validated" },
+                "confidence": { "@label": "Confidence", "value": "notvalidated", "value-label": "Not Validated" },
                 "visibility": { "@label": "Visibility", "value": "partners", "value-label": "Partners" }
             },
             {
-                "confidence": { "@label": "KCS confidence", "value": "notvalidated", "value-label": "Not Validated" },
+                "confidence": { "@label": "Confidence", "value": "notvalidated", "value-label": "Not Validated" },
                 "visibility": { "@label": "Visibility", "value": "customers", "value-label": "Customers" }
             },
             {
-                "confidence": { "@label": "KCS confidence", "value": "validated", "value-label": "Validated" },
+                "confidence": { "@label": "Confidence", "value": "validated", "value-label": "Validated" },
                 "visibility": { "@label": "Visibility", "value": "internal", "value-label": "Internal" }
             },
             {
-                "confidence": { "@label": "KCS confidence", "value": "archived", "value-label": "Archived" },
+                "confidence": { "@label": "Confidence", "value": "archived", "value-label": "Archived" },
                 "visibility": { "@label": "Visibility", "value": "internal", "value-label": "Internal" }
             }
         ]
