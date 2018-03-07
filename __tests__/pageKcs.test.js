@@ -23,4 +23,15 @@ describe('PageKcs', () => {
     it('can initialize state', () => {
         return kcs.initialize();
     });
+    it('can set flag state', () => {
+        return kcs.setFlag({ state: true, details: 'Terrible' });
+    });
+    it('requires a state to set flag state', () => {
+        expect.assertions(1);
+        return expect(kcs.setFlag({})).rejects.toEqual('A flagged state must be specified for request.');
+    });
+    it('requires a state to set flag state', () => {
+        expect.assertions(1);
+        return expect(kcs.setFlag({ state: true })).rejects.toEqual('Details must be specified for request when the flagged state is set to true.');
+    });
 });

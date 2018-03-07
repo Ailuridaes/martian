@@ -61,6 +61,33 @@ export class PageKcs {
     }
 
     /**
+     * Posts KCS flagging state for given page
+     * @param {Object} flag The state that the page should be set to. Must include at least one of the following attributes.
+     * @param {Boolean} [flag.state] The flag state to set the page to.
+     * @param {String} [flag.details] Details about the state of the flag. Required when flag is set to true.
+     * @returns {Promise} A Promise that is resolved, or rejected with an error specifying the reason for rejection.
+     */
+    setFlag(flag) {
+        if (typeof flag.state === 'undefined') {
+            return Promise.reject('A flagged state must be specified for request.');
+        }
+        if (flag.state === true && typeof flag.details === 'undefined') {
+            return Promise.reject('Details must be specified for request when the flagged state is set to true.');
+        }
+        var flagData = {
+            flag: flag.state,
+            flag_details: flag.details
+        };
+        return this._plug
+            .at('flag')
+            .withParams()
+            .post(JSON.stringify({
+                flag: flag.state,
+                flag_details: flag.details
+            }), utility.jsonRequestType);
+    }
+
+    /**
      * Initialize KCS state for given page
      * @returns {Promise} A Promise that is resolved, or rejected with an error specifying the reason for rejection.
      */

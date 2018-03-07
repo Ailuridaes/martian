@@ -6,7 +6,14 @@ const attributeModel = [
 
 export const kcsStateModel = [
     { field: 'confidence', transform: attributeModel },
-    { field: 'flag', transform: attributeModel },
+    {
+        field: 'flag',
+        transform: [
+            { field: '@label', name: 'label' },
+            { field: 'value', transform: 'boolean' },
+            { field: 'value-label', name: 'valueLabel' }
+        ]
+    },
     { field: 'governance', transform: attributeModel },
     { field: 'visibility', transform: attributeModel }
 ];
